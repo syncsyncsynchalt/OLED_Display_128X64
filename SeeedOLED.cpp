@@ -147,15 +147,10 @@ void SeeedOLED::init(void)
 
 void SeeedOLED::sendCommand(unsigned char command)
 {
-  Wire.beginTransmission(SeeedOLED_Address); // begin I2C communication
-#if defined(ARDUINO) && ARDUINO >= 100
-  Wire.write(SeeedOLED_Command_Mode);        // Set OLED Command mode
-  Wire.write(command);
-#else
-  Wire.send(SeeedOLED_Command_Mode);         // Set OLED Command mode
-  Wire.send(command);
-#endif
-  Wire.endTransmission();                // End I2C communication
+	Wire.beginTransmission(SeeedOLED_Address); // begin I2C communication
+	Wire.write(SeeedOLED_Command_Mode);        // Set OLED Command mode
+	Wire.write(command);
+	Wire.endTransmission();                // End I2C communication
 }
 
 void SeeedOLED::setBrightness(unsigned char Brightness)
@@ -207,15 +202,10 @@ void SeeedOLED::clearDisplay()
 
 void SeeedOLED::sendData(unsigned char Data)
 {
-     Wire.beginTransmission(SeeedOLED_Address); // begin I2C transmission
-#if defined(ARDUINO) && ARDUINO >= 100
-     Wire.write(SeeedOLED_Data_Mode);            // data mode
-     Wire.write(Data);
-#else
-     Wire.send(SeeedOLED_Data_Mode);            // data mode
-     Wire.send(Data);
-#endif
-     Wire.endTransmission();                    // stop I2C transmission
+	Wire.beginTransmission(SeeedOLED_Address); // begin I2C transmission
+	Wire.write(SeeedOLED_Data_Mode);            // data mode
+	Wire.write(Data);
+	Wire.endTransmission();                    // stop I2C transmission
 }
 
 void SeeedOLED::putChar(unsigned char C)
